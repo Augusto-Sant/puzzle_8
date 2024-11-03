@@ -1,4 +1,5 @@
 import pygame
+import time
 
 # Configurações do Pygame
 WIDTH, HEIGHT = 300, 300
@@ -147,6 +148,7 @@ def main(caminho):
     if not caminho:
         print("Nenhum caminho encontrado!")
         return
+    print("Numero de passos: ",len(caminho))
 
     clock = pygame.time.Clock()
     running = True
@@ -173,12 +175,18 @@ if __name__ == "__main__":
     obj_final = str([[1, 2, 3], [4, 5, 6], [7, 8, 0]])
 
     print("Usando Busca em Largura:")
+    start_time = time.time()
     caminho_bfs = bfs(tabuleiro, obj_final)
+    elapsed_bfs = time.time() - start_time
+    print(f"Tempo de execução (BFS): {elapsed_bfs:.4f} segundos")
     print("Mostrando passos da busca em largura:")
     main(caminho_bfs)
 
     print("\nUsando A*:")
+    start_time = time.time()
     caminho_a_estrela = a_estrela(tabuleiro, obj_final)
+    elapsed_bfs = time.time() - start_time
+    print(f"Tempo de execução (A*): {elapsed_bfs:.4f} segundos")
     print("Mostrando passos da busca A*:")
     main(caminho_a_estrela)
 
